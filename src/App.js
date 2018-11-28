@@ -1,9 +1,10 @@
 import React from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
-import {router} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
+import SearchPage from './SearchPage'
 
 class BooksApp extends React.Component {
   state = {
@@ -19,7 +20,9 @@ class BooksApp extends React.Component {
 
   componentDidMount(){
     BooksAPI.getAll().then((books) => {
-      this.setState({ books })
+      // this.setState({ books })
+      // console.log(books)
+      books.forEach((book)=>console.log(book.title + ' ' + book.shelf))
     })
   }
 
@@ -28,11 +31,14 @@ class BooksApp extends React.Component {
   render() {
 
     let searched_books = BooksAPI.search('Classics').then((searched_books)=>{
-      console.log(searched_books);
+      //console.log(searched_books);
     }) 
+
     console.log(searched_books);
     return (
       <div className="app">
+
+        <Route exact path="/" render={()=>(<SearchPage />)} />
         {this.state.showSearchPage ? (
           <div className="search-books">
             <div className="search-books-bar">
@@ -66,7 +72,7 @@ class BooksApp extends React.Component {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                       <li>
-                        <Book />
+                        <Book title='To kill a Mockingbird' author='Harper Lee'/>
                       </li>
                       <li>
                         <div className="book">
