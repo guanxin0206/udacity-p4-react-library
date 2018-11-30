@@ -1,6 +1,4 @@
-import React,{Component} from 'react'
-import PropTypes from 'propTypes'
-
+import React,{Component} from 'react';
 
 class Book extends Component{
   state = {
@@ -15,13 +13,13 @@ class Book extends Component{
   //   shelf: PropTypes.string,
   // }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({shelf: event.target.value});
   }
 
+  
 
   render(){
-    this.state.setState()
     const title = this.props.title;
     const author = this.props.author;
     const cover = this.props.backgroundImage;
