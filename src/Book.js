@@ -1,17 +1,18 @@
 import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 
 class Book extends Component{
   state = {
     shelf: ''
   }
 
-  // static propTypes = {
-  //   title: PropTypes.string.isRequired,
-  //   author: PropTypes.string.isRequired,
-  //   cover: PropTypes.string,
-  //   //onChangeShelf: PropTypes.func.isRequired,
-  //   shelf: PropTypes.string,
-  // }
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    cover: PropTypes.string,
+    //onChangeShelf: PropTypes.func.isRequired,
+    shelf: PropTypes.string,
+  }
 
   handleChange = (event) => {
     this.setState({shelf: event.target.value});
@@ -30,7 +31,7 @@ class Book extends Component{
               <div className="book-top">
                 <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${cover})` }}></div>
                 <div className="book-shelf-changer">
-                  <select value={this.state.shelf} onChange={this.handleChange}>
+                  <select value={this.props.shelf} onChange={this.handleChange}>
                     <option value="move" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>

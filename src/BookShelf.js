@@ -33,7 +33,7 @@ componentDidMount(){
                         }
 
                         {this.props.books.map((book, index)=>
-                          <li key={index}><Book title={book.title} author={book.author}/>  </li>
+                          <li key={index}><Book title={book.title} author={book.authors} shelf={book.shelf}/>  </li>
 
                         )
                         }
