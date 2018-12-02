@@ -1,30 +1,34 @@
 import React,{Component} from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 class Book extends Component{
-  state = {
-    shelf: ''
-  }
-
   static propTypes = {
-    title: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    cover: PropTypes.string,
-    //onChangeShelf: PropTypes.func.isRequired,
-    shelf: PropTypes.string,
+    book: propTypes.object.isRequired,
+    title: propTypes.string,
+    authors: propTypes.array,
+    cover: propTypes.string,
+    //onChangeShelf: propTypes.func.isRequired,
+    shelf: propTypes.string
   }
 
-  handleChange = (event) => {
-    this.setState({shelf: event.target.value});
-  }
+  // handleChange = (event) => {
+  //   this.setState({shelf: event.target.value});
+  // }
 
   
 
   render(){
-    const title = this.props.title;
-    const author = this.props.author;
-    const cover = this.props.backgroundImage;
-    const shelf = this.props.shelf;
+    const thisBook = this.props.book;
+    var cover;
+    if(this.props.backgroundImage){
+      cover = this.props.backgroundImage;
+    }
+    else{
+      cover = this.props.book.imageLinks.thumbnail;
+    }
+    
+    
+    
 
     return(
            <div className="book">
@@ -40,8 +44,8 @@ class Book extends Component{
                   </select>
                 </div>
               </div>
-              <div className="book-title">{title}</div>
-              <div className="book-authors">{author}</div>
+              <div className="book-title">{thisBook.title}</div>
+              <div className="book-authors">{thisBook.author}</div>
             </div>)
   }
 }
