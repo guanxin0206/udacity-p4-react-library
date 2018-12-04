@@ -7,11 +7,23 @@ import Book from './Book';
 class SearchPage extends Component{
   state = {
     query: '',
-    books: [],
-    shelvedBooks: []
+    books: []
   }
+
+// this.setState((prevState, props) =>{
+//     const shelfBooks = props.books;
+
+//     const newSearchBooks = searchBooks.map(searchBook=> {
+//        const  
+//     });
+
+// })
+
   updateQuery = (query) => {
-      if(query) {
+
+    // 用shelvedBooks 常态变量，之后做比较
+      const shelvedBooks = this.props.books;
+      if(query) {          
           this.setState({ query })
           BooksAPI.search(query).then(result => {
               if (!result || result.error) {
@@ -19,13 +31,14 @@ class SearchPage extends Component{
                       books: []
                   })
               } else {
-
                   // Search Results
-                  // eslint-disable-next-line
+                  
+                //   console.log(result)
+                // eslint-disable-next-line
                   result.map((book) => {
-                      book.shelf = 'none'
+                       book.shelf = 'none'
                       // eslint-disable-next-line
-                      this.state.shelvedBooks.map((shelvedBook) => {
+                      shelvedBooks.map((shelvedBook) => {
                           if(shelvedBook.id === book.id) {
                               book.shelf = shelvedBook.shelf
                           }
@@ -44,18 +57,16 @@ class SearchPage extends Component{
         }
   }
 
-  componentDidMount(){
-      this.showAll();
-  }
-
-  showAll(){
-      this.setState({books:this.props.books})
-  }
+  
 
   render(){
 
     const {query, books} = this.state
-    
+    // console.log("Props Books:")
+    // console.log(this.props.books)
+    // console.log("shelvedBooks:")
+    // console.log(this.state.shelvedBooks)
+
     return (
             <div className="search-books">
               <div className="search-books-bar">
@@ -79,11 +90,13 @@ class SearchPage extends Component{
               </div>
               <div className="search-books-results">
               <h2>{query !== '' ? `${books.length} Books Found!` : ``}</h2>
-                <ol className="books-grid">
-                    {books.map((book) => (
-                        <Book book={book} shelf={book.shelf}/>
+                
+                    {books.map((book, index) => (
+                        <ol key={index} className="books-grid">
+                            <Book book={book} shelf={book.shelf}/>
+                        </ol>
                     ))}
-                </ol>
+                
               </div>
             </div>
 

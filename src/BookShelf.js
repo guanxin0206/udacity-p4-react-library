@@ -37,11 +37,12 @@ class BookShelf extends Component{
 
                         {books.filter( (thisBook)=>thisBook.shelf === shelf_mapping[bookshelf_title]).
                               map((thisBook, index)=>
-                                <li key={index}><Book book={thisBook} 
-                                            title={thisBook.title} 
-                                            authors={thisBook.authors} 
-                                            shelf={thisBook.shelf} 
-                                            backgroundImage={thisBook.imageLinks.thumbnail}/> 
+                                <li key={index}>
+                                <Book book={thisBook} 
+                                        title={thisBook.title} 
+                                        authors={thisBook.authors} 
+                                        shelf={thisBook.shelf} 
+                                        backgroundImage={thisBook.imageLinks.thumbnail}/> 
                                 </li>
                                 )
                         }
