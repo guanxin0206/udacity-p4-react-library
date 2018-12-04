@@ -31,6 +31,9 @@ class Book extends Component{
     else{
       cover = thisBook.imageLinks ? thisBook.imageLinks.thumbnail : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"
     }
+
+    const title = thisBook.title ? thisBook.title : "Default title"
+    const authors = thisBook.authors ? thisBook.author: "Default authors"
     
     
     
@@ -50,8 +53,8 @@ class Book extends Component{
                   </select>
                 </div>
               </div>
-              <div className="book-title">{thisBook.title}</div>
-              <div className="book-authors">{thisBook.author}</div>
+              <div className="book-title">{title}</div>
+              <div className="book-authors">{authors}</div>
             </div>)
   }
 }

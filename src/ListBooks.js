@@ -1,16 +1,10 @@
-import React,{Component} from 'react'
+import React from 'react'
 import BookShelf from './BookShelf';
 import {Link} from 'react-router-dom';
 import propTypes from 'prop-types';
 
-class ListBooks extends Component{
-	state = {}
-	static propTypes = {
-		books: propTypes.array.isRequired
-	}
-	
-	render(){
-		return (
+function ListBooks(props){
+	return (
 			<div>
 				<div className="list-books"></div>
 				
@@ -19,21 +13,23 @@ class ListBooks extends Component{
 				</div>
 				<div className="list-books-content">
 					<div>
-						<BookShelf title='Currently Reading' books={this.props.books}/>
-						<BookShelf title='Want to Read' books={this.props.books}/>
-						<BookShelf title='Read' books={this.props.books}/>
+						<BookShelf title='Currently Reading' books={props.books}/>
+						<BookShelf title='Want to Read' books={props.books}/>
+						<BookShelf title='Read' books={props.books}/>
 					</div>
 				</div>
 
 				<div className="open-search"> 
               		<Link to='/search' >Add a book</Link>
           		</div>   
-			</div>
-			
-			
-			
+			</div>	
+
 		)
-	}
+
+}
+
+ListBooks.propTypes = {
+	books: propTypes.array
 }
 
 export default ListBooks
