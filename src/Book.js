@@ -29,8 +29,9 @@ class Book extends Component{
       cover = this.props.backgroundImage;
     }
     else{
-      cover = this.props.book.imageLinks.thumbnail;
+      cover = thisBook.imageLinks ? thisBook.imageLinks.thumbnail : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"
     }
+    
     
     
     

@@ -44,6 +44,14 @@ class SearchPage extends Component{
         }
   }
 
+  componentDidMount(){
+      this.showAll();
+  }
+
+  showAll(){
+      this.setState({books:this.props.books})
+  }
+
   render(){
 
     const {query, books} = this.state
