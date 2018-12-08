@@ -90,13 +90,12 @@ class SearchPage extends Component{
               </div>
               <div className="search-books-results">
               <h2>{query !== '' ? `${books.length} Books Found!` : ``}</h2>
-                
+                  <ol className="books-grid">
+                  
                     {books.map((book, index) => (
-                        <ol key={index} className="books-grid">
-                            <Book book={book} shelf={book.shelf}/>
-                        </ol>
+                      <Book key={index} book={book} shelf={book.shelf}/>
                     ))}
-                
+                  </ol>
               </div>
             </div>
 

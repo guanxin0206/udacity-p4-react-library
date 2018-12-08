@@ -13,6 +13,8 @@ this.setState((prevState, props) => {
       shelfBook => shelfBook.id === searchBook.id
     );
 
+    //
+
     // 同步 shelf 值，并返回该新的图书对象
     return {
       ...searchBook,

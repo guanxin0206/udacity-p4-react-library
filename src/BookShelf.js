@@ -32,10 +32,8 @@ class BookShelf extends Component{
                     <h2 className="bookshelf-title">{bookshelf_title}</h2>
                     <div className="bookshelf-books">
                       <ol className="books-grid">
-                        {// loop push to container and , return container
-                        }
-
-                        {books.filter( (thisBook)=>thisBook.shelf === shelf_mapping[bookshelf_title]).
+                        {//eslint-disable-next-line
+                          books.filter( (thisBook)=>thisBook.shelf === shelf_mapping[bookshelf_title]).
                               map((thisBook, index)=>
                                 <li key={index}>
                                 <Book book={thisBook} 

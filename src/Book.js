@@ -13,7 +13,9 @@ class Book extends Component{
   }
 
   changeShelf = (book, currentShelf) => {
-    BooksAPI.update(book, currentShelf).then(this.showAll())
+    BooksAPI.update(book, currentShelf).then(()=>{
+      book.shelf = currentShelf;
+      this.showAll()})
   }
 
   showAll = () => {
@@ -44,7 +46,7 @@ class Book extends Component{
               <div className="book-top">
                 <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${cover})` }}></div>
                 <div className="book-shelf-changer">
-                  <select value={this.props.shelf} onChange={(e) => {this.changeShelf(thisBook, e.target.value)}}>
+                  <select value={thisBook.shelf ? thisBook.shelf : 'None'} onChange={(e) => {this.changeShelf(thisBook, e.target.value)}}>
                     <option value="move" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
